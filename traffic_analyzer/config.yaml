@@ -1,0 +1,16 @@
+# traffic_analyzer/config.yaml
+detection:
+  heartbeat:
+    min_samples: 5
+    max_std_dev: 0.5          # 时间间隔标准差阈值
+    min_interval: 1.0         # 最小间隔（秒）
+    max_interval: 60.0        # 最大间隔（秒）
+    max_size_std_dev: 10.0    # 载荷大小波动阈值
+  anomaly:
+    max_payload_size: 1000    # 大包阈值（字节）
+    common_ports: [80, 443, 53, 8080, 8443, 22, 21]
+
+web:
+  upload_folder: "../pcaps"
+  allowed_extensions: [".pcap"]
+  max_file_size_mb: 10
