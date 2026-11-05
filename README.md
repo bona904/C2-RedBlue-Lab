@@ -167,30 +167,37 @@ F1-Score：1.00
 > 两份样本共同构成本次测试集，系统在该测试集上的检测结果：**精确率、召回率、F1 值均为 1.00**。
 > 该指标仅针对这两份公开靶标样本，在更加复杂、带 JA3 混淆、随机包长的规避型 C2 流量下，检测效果会下降。
 
----
+### 📂 关于测试数据样本（恶意 pcap 文件）
 
----
+为了遵守 GitHub 的文件大小限制以及避免托管真实恶意样本，本项目仓库中**未上传**以下两个大型真实靶场 pcap 文件：
+1. `2020-11-23-Hancitor-infection-with-Cobalt-Strike.pcap` 
+2. `2025-01-22-traffic-analysis-exercise.pcap` 
+
+**如何获取与复现：**
+- 这两个样本均来源于公开的安全研究网站 `malware-traffic-analysis.net`。
+- 你可以自行前往对应日期的文章页面下载（解压密码通常为 `infected`）。
+- 下载解压后，将 `.pcap` 文件放入本项目的 `pcaps/` 目录下，即可在 Web 控制台的下拉框中看到它们，或者通过命令行 `python main.py` 进行离线分析复现。
 
 ### 🖼️ 系统验证结果展示
 
 #### 1. 检测引擎量化指标 (F1 = 1.00，基于公开恶意 pcap 样本)
 *(展示终端执行的评估结果，精确率、召回率与 F1 分数，且包含告警去重日志)*
 
-![评估指标截图](docs/screenshots/f1_score.png)
+![评估指标截图](docs/f1_score.png)
 
 #### 2. Web 控制台与 SOC 研判界面
 *(展示样本一：Hancitor 投递 Cobalt Strike 样本，系统在 5440 条告警中完成聚合，并渲染异常时间间隔图)*
 
-![Web UI 样本一](docs/screenshots/web_ui_sample1.png)
+![Web UI 样本一](docs/web_ui_sample1.png)
 
 *(展示样本二：虚假软件下载站样本，系统成功触发【高危】C2 心跳行为告警，并给出详细的隔离/阻断建议)*
 
-![Web UI 样本二](docs/screenshots/web_ui_sample2.png)
+![Web UI 样本二](docs/web_ui_sample2.png)
 
 #### 3. 深度 TLS 指纹告警（真实恶意样本告警样例）
 *(展示系统穿透海量噪音后，在独立日志中截获的 **93 字节极简握手包** 及 **固定长度心跳回包证据链**)*
 
-![TLS 告警截图](docs/screenshots/tls_warning.png)
+![TLS 告警截图](docs/tls_warning.png)
 
 ⚠️ 检测局限性（务必知悉）：
 
