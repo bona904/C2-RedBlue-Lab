@@ -66,7 +66,7 @@ c2-evasion-traffic-analysis/
 └── README.md                             # 项目说明书
 
 
-🛠️ 环境依赖与安装前置条件
+## 🛠️ 环境依赖与安装前置条件
 在运行代码前，请确保您的系统已配置以下环境：
 
 1. C++ 加载器 (红队)
@@ -90,7 +90,7 @@ pip install -r traffic_analyzer/requirements.txt
 3. Docker 容器化部署
 需要安装 Docker Desktop，并确保已正确配置 Npcap 的桥接模式（若需在容器内实时抓包）。
 
-🚀 详细使用教程
+## 🚀 详细使用教程
 方式一：一键靶场启动（推荐）
 双击运行项目根目录下的 start_lab.bat，脚本将自动启动 C2 Server、Advanced Client 和 Web 平台。浏览器访问 http://127.0.0.1:5000 即可。
 
@@ -120,7 +120,7 @@ Web 平台分析：运行 python app.py，通过前端界面上传 pcap。
 bash
 cd pcaps
 python dataset_generator.py
-⚙️ 配置文件说明 (traffic_analyzer/config.yaml)
+## ⚙️ 配置文件说明 (traffic_analyzer/config.yaml)
 配置项	默认值	说明
 heartbeat.min_samples	5	触发心跳检测所需的最小包数样本
 heartbeat.max_std_dev	0.5	判定心跳的时间间隔标准差阈值（秒）
@@ -129,7 +129,7 @@ anomaly.max_payload_size	1000	大包外传检测的载荷字节阈值
 web.max_file_size_mb	10	Web 平台允许上传的 pcap 文件大小上限
 注：修改配置后，需重启 app.py 或重新运行 main.py 以生效。
 
-📁 输出产物说明
+## 📁 输出产物说明
 审计日志 (alerts_*.log)：每次分析生成独立文件，格式包含：时间戳、分析流水号 (Analysis ID)、源文件名、异常总数、详细证据链。
 
 Web 临时文件：上传的 pcap 文件存储于 pcaps/upload_xxxx.pcap，分析生成的图表存储于 traffic_analyzer/static/plot_xxxx.png。
@@ -145,7 +145,7 @@ Recall（召回率）：100%
 
 F1-Score：1.00
 
-# 🏆 实战演练：基于公开恶意流量数据集的真实样本验证
+## 🏆 实战演练：基于公开恶意流量数据集的真实样本验证
 
 本检测系统除了可以在自建红蓝靶场中完成模拟 C2 流量识别，还在两份来自 `malware-traffic-analysis.net` 的公开真实恶意流量 pcap 上完成了独立测试验证，两份样本均为真实感染场景抓包，包含正常背景流量、网页浏览、恶意下载与 C2 通信混合噪声。
 
@@ -199,7 +199,7 @@ F1-Score：1.00
 
 ![TLS 告警截图](docs/tls_warning.png)
 
-⚠️ 检测局限性（务必知悉）：
+## ⚠️ 检测局限性（务必知悉）：
 
 测试集局限：F1=1.00 仅针对本项目 dataset_generator.py 生成的标准化数据集。真实企业生产网络的复杂背景噪音会显著降低实际检测指标。
 
@@ -211,7 +211,7 @@ F1-Score：1.00
 
 原型定位：本项目是安全研究原型，不足以直接作为生产环境的 IDS/IPS 产品使用。
 
-❓ 常见问题排错 (FAQ)
+## ❓ 常见问题排错 (FAQ)
 Scapy 实时抓包没反应/报错？
 
 答：确认安装了 Npcap，并且以管理员身份运行 Python。
@@ -232,5 +232,5 @@ start_lab.bat 端口 5000 被占用？
 
 答：请确认 traffic_analyzer 目录具备写入权限。
 
-📜 许可协议 (License)
+## 📜 许可协议 (License)
 本项目采用 MIT License 开源协议。如用于学术研究，请注明项目出处。任何用于未授权攻击的行为均违背本项目初衷，作者不承担任何法律及连带责任。
